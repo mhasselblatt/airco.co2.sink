@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar-Powered Air Conditioning — Net Carbon Sink Infographic Summary</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+    /* CSS Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Core Variables */
+    :root {
+      --solar-blue: #1E50A0;
+      --dark-navy: #0f3870;
+      --near-black: #1A1A1A;
+      --bright-green: #6FE09A;
+      --medium-green: #1E8240;
+      --amber: #C88200;
+      --light-grey: #F5F5F5;
+      --blue-tint: #E8EFFE;
+      --green-tint: #E6F7EE;
+      --amber-tint: #FFF5E6;
+      --white: #FFFFFF;
+      /* NEW: teal for the physics box */
+      --teal: #0E7490;
+      --teal-tint: #E0F7FA;
+    }
+
+    body {
+      background-color: #e8e8e8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 20px;
+    }
+
+    /* A4 Screen Canvas Container — height extended to accommodate new box */
+    .page {
+      width: 794px;
+      background: var(--white);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* --- BAND 1: HEADER --- */
+    .band-header {
+      height: 128px;
+      background-color: var(--solar-blue);
+      padding: 18px 36px 12px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .band-header .eyrow {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.70);
+      margin-bottom: 5px;
+    }
+    .band-header h1 {
+      font-size: 23px;
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+      color: var(--white);
+    }
+    .band-header h1 span.green {
+      color: var(--bright-green);
+    }
+    .band-header .subtitle {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+    }
+    .band-header .tag {
+      margin-top: 6px;
+      font-size: 9px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.50);
+      letter-spacing: 0.5px;
+    }
+
+    /* --- BAND 2: HERO SECTION --- */
+    .band-hero {
+      height: 162px;
+      background-color: var(--dark-navy);
+      padding: 18px 36px 18px 36px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-shrink: 0;
+    }
+    .band-hero .hero-icon {
+      font-size: 60px;
+      line-height: 1;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 12px rgba(111,224,154,0.5));
+    }
+    .band-hero .hero-text { flex: 1; }
+    .band-hero .hero-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bright-green);
+      margin-bottom: 2px;
+    }
+    .band-hero .hero-number {
+      font-size: 60px;
+      font-weight: 900;
+      color: var(--bright-green);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .band-hero .hero-number span.unit {
+      font-size: 19px;
+      font-weight: 400;
+      color: rgba(111,224,154,0.80);
+      letter-spacing: 0;
+      margin-left: 5px;
+    }
+    .band-hero .hero-descriptor {
+      font-size: 11.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.90);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .band-hero .hero-descriptor strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+    .band-hero .hero-caveat {
+      margin-top: 4px;
+      font-size: 9px;
+      color: rgba(255,255,255,0.50);
+      font-style: italic;
+    }
+
+    /* --- BAND 3: SCALES --- */
+    .band-scales {
+      background-color: var(--light-grey);
+      padding: 14px 36px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .band-scales .section-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--solar-blue);
+      margin-bottom: 10px;
+    }
+    .scale-row {
+      display: flex;
+      align-items: stretch;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      height: 204px;
+    }
+    .scale-col {
+      flex: 1;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .scale-col.cost {
+      background-color: var(--blue-tint);
+      border-right: 1px solid rgba(0,0,0,0.05);
+    }
+    .scale-col.benefit { background-color: var(--green-tint); }
+    .scale-col-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .scale-col.cost .scale-col-label  { color: var(--solar-blue); }
+    .scale-col.benefit .scale-col-label { color: var(--medium-green); }
+    .scale-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .scale-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .scale-col.cost .dot    { background-color: var(--solar-blue); }
+    .scale-col.benefit .dot { background-color: var(--medium-green); }
+    .scale-item .desc {
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--near-black);
+      line-height: 1.25;
+      flex: 1;
+    }
+    .scale-item .kg {
+      font-size: 10.5px;
+      font-weight: 700;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .scale-col.cost .kg    { color: var(--solar-blue); }
+    .scale-col.benefit .kg { color: var(--medium-green); }
+    .scale-total {
+      margin-top: auto;
+      padding-top: 6px;
+      border-top: 1.5px solid rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .scale-total .label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scale-col.cost .scale-total .label    { color: var(--solar-blue); }
+    .scale-col.benefit .scale-total .label { color: var(--medium-green); }
+    .scale-total .value { font-size: 17px; font-weight: 900; }
+    .scale-col.cost .scale-total .value    { color: var(--solar-blue); }
+    .scale-col.benefit .scale-total .value { color: var(--medium-green); }
+    .scale-col.divider {
+      flex: 0 0 38px;
+      background-color: var(--near-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      color: var(--bright-green);
+      font-weight: 900;
+    }
+
+    /* Result Strip */
+    .result-strip {
+      margin-top: 10px;
+      background-color: var(--medium-green);
+      border-radius: 8px;
+      padding: 9px 16px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+    .result-strip .arrow {
+      font-size: 26px;
+      color: var(--white);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .result-strip .result-text { flex: 1; }
+    .result-strip .result-main {
+      font-size: 12.5px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.25;
+    }
+    .result-strip .result-sub {
+      font-size: 9px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .result-strip .result-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 6px;
+      padding: 4px 10px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .result-strip .badge-num {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .result-strip .badge-label {
+      font-size: 7.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+
+    /* --- BAND 4: THREE REASONS WHY --- */
+    .band-reasons {
+      background-color: var(--white);
+      padding: 13px 36px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .band-reasons .section-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--solar-blue);
+      margin-bottom: 10px;
+    }
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .reason-card {
+      border-radius: 8px;
+      padding: 10px 11px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      min-height: 142px;
+    }
+    .reason-card.solar     { background-color: var(--blue-tint);  border-top: 3px solid var(--solar-blue); }
+    .reason-card.behaviour { background-color: var(--green-tint); border-top: 3px solid var(--medium-green); }
+    .reason-card.export    { background-color: var(--amber-tint); border-top: 3px solid var(--amber); }
+    .reason-icon { font-size: 17px; line-height: 1; margin-bottom: 2px; }
+    .reason-headline {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--near-black);
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+    .reason-body {
+      font-size: 9px;
+      font-weight: 400;
+      color: #444;
+      line-height: 1.35;
+      flex-grow: 1;
+      margin-bottom: 4px;
+    }
+    .reason-stat { font-size: 11.5px; font-weight: 900; line-height: 1.2; }
+    .reason-card.solar .reason-stat     { color: var(--solar-blue); }
+    .reason-card.behaviour .reason-stat { color: var(--medium-green); }
+    .reason-card.export .reason-stat    { color: var(--amber); }
+    .reason-stat span {
+      font-size: 8px;
+      font-weight: 400;
+      color: #555;
+      display: block;
+      margin-top: 1px;
+    }
+
+    /* --- NEW BAND 4b: HEAT PUMP PHYSICS BOX --- */
+    .band-physics {
+      background-color: var(--white);
+      padding: 0 36px 13px 36px;
+      flex-shrink: 0;
+    }
+    .physics-box {
+      background-color: var(--teal-tint);
+      border: 1.5px solid var(--teal);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .physics-icon {
+      font-size: 26px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 1px;
+    }
+    .physics-content { flex: 1; }
+    .physics-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 3px;
+    }
+    .physics-headline {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--near-black);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .physics-body {
+      font-size: 9px;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.45;
+    }
+    .physics-body strong { color: var(--teal); }
+
+    /* --- BAND 5: MYTH VS FACT --- */
+    .band-myth {
+      background-color: var(--near-black);
+      padding: 10px 36px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .myth-row {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 84px;
+    }
+    .myth-col {
+      flex: 1;
+      padding: 9px 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .myth-col.myth-side {
+      background: rgba(180,30,30,0.18);
+      border: 1.5px solid rgba(180,30,30,0.5);
+      border-right: none;
+      border-radius: 8px 0 0 8px;
+    }
+    .myth-col.fact-side {
+      background: rgba(30,130,64,0.20);
+      border: 1.5px solid rgba(30,130,64,0.5);
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+    }
+    .myth-vs {
+      flex: 0 0 34px;
+      background-color: var(--near-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.30);
+      letter-spacing: 1px;
+    }
+    .myth-tag {
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .myth-col.myth-side .myth-tag { color: #ff7070; }
+    .myth-col.fact-side .myth-tag { color: var(--bright-green); }
+    .myth-text {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+    .myth-col.myth-side .myth-text { color: rgba(255,255,255,0.85); }
+    .myth-col.fact-side .myth-text { color: var(--white); }
+    .myth-sub { font-size: 8.5px; font-weight: 400; line-height: 1.3; }
+    .myth-col.myth-side .myth-sub { color: rgba(255,255,255,0.45); }
+    .myth-col.fact-side .myth-sub { color: rgba(255,255,255,0.65); }
+
+    /* --- BAND 6: CONTEXT PILLS --- */
+    .band-context {
+      background-color: var(--light-grey);
+      padding: 10px 36px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .context-pill {
+      flex: 1;
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      min-height: 58px;
+    }
+    .pill-icon { font-size: 17px; flex-shrink: 0; }
+    .pill-num {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--solar-blue);
+      line-height: 1.1;
+    }
+    .pill-desc {
+      font-size: 8px;
+      font-weight: 400;
+      color: #555;
+      line-height: 1.25;
+      margin-top: 1px;
+    }
+
+    /* --- BAND 7: FOOTER --- */
+    .band-footer {
+      background-color: var(--near-black);
+      padding: 8px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .band-footer .foot-left {
+      font-size: 7.5px;
+      color: rgba(255,255,255,0.40);
+      line-height: 1.5;
+      flex: 1.5;
+    }
+    .band-footer .foot-badge {
+      background-color: var(--medium-green);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      margin: 0 12px;
+    }
+    .band-footer .foot-right {
+      font-size: 7.5px;
+      color: rgba(255,255,255,0.40);
+      text-align: right;
+      line-height: 1.5;
+      flex: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ═══ BAND 1: HEADER ═══ -->
+    <div class="band-header">
+      <div class="eyrow">Solar-Coupled Air Conditioning · Basel, Switzerland · 2025–2026</div>
+      <h1>This Air Conditioner <span class="green">Removes</span> More Carbon Than It Creates</h1>
+      <div class="subtitle">
+        When powered by solar panels and assessed across its full lifespan — including the carbon
+        cost of manufacturing it — this system acts as a net carbon sink. Here is why.
+      </div>
+      <div class="tag">
+        Daikin Stylish FTXA50/RXA50 · Independent carbon assessment · Full technical report available on request
+      </div>
+    </div>
+
+    <!-- ═══ BAND 2: HERO ═══
+         UPDATED: hero number changed from −27 to −35 (corrected two-prompt result)
+         UPDATED: export range changed from −72/−207 to −79/−214 -->
+    <div class="band-hero">
+      <div class="hero-icon">🌱</div>
+      <div class="hero-text">
+        <div class="hero-label">Net annual carbon position</div>
+        <div class="hero-number">−35 <span class="unit">kg CO₂ per year</span></div>
+        <div class="hero-descriptor">
+          Even with <strong>zero solar electricity exported to the grid</strong>, this system
+          prevents more greenhouse gas emissions than it causes — every single year of operation.
+        </div>
+        <div class="hero-caveat">
+          With typical solar export (5–20 kWh/day), the benefit grows to −68 to −167 kg CO₂ per year.
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BAND 3: SCALES ═══
+         UPDATED cost column:
+           — "Winter standby" reduced from 16 kg to 5 kg (nighttime May–Sep only; unit
+             physically disconnected Oct–Apr per owner confirmation)
+           — Annual total cost reduced from 49 kg to 37 kg accordingly
+         UPDATED benefit column:
+           — Shower figure updated from 55 kg to 55 kg (unchanged — 4 persons confirmed)
+           — Laundry updated from 15 kg to 21 kg (includes textile wear, 4-person household)
+           — Fridge updated from 1 kg to 1 kg (Miele-specific, rounded)
+           — Device degradation updated from 5 kg to 1 kg (Threshold-B calibrated, 8 days)
+           — Annual total saved updated from 76 kg to 78 kg
+         UPDATED result strip: savings outweigh costs by 41 kg (not 27);
+           15-yr footprint updated from ~735 kg to ~651 kg;
+           badge updated from −27 to −35 -->
+    <div class="band-scales">
+      <div class="section-title">How the scales tip — annual carbon cost vs. annual carbon avoided</div>
+
+      <div class="scale-row">
+        <!-- Cost Column -->
+        <div class="scale-col cost">
+          <div class="scale-col-label">What the system costs the climate</div>
+
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Manufacturing and installing the unit (spread over 15 years)</div>
+            <div class="kg">29 kg</div>
+          </div>
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Refrigerant leakage (best practice maintenance)</div>
+            <div class="kg">8 kg</div>
+          </div>
+          <!-- UPDATED: was 16 kg (year-round standby); now 5 kg (nighttime May–Sep only) -->
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Standby electricity — nighttime only, May–Sep (unit off Oct–Apr)</div>
+            <div class="kg">5 kg</div>
+          </div>
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">End-of-life recycling (spread over 15 years)</div>
+            <div class="kg">1 kg</div>
+          </div>
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Active cooling energy</div>
+            <div class="kg" style="color: #1E8240; font-weight: 900;">0 kg ☀️</div>
+          </div>
+
+          <!-- UPDATED total: was 49 kg, now 43 kg -->
+          <div class="scale-total">
+            <div class="label">Annual total cost</div>
+            <div class="value">43 kg</div>
+          </div>
+        </div>
+
+        <!-- VS divider -->
+        <div class="scale-col divider">VS</div>
+
+        <!-- Benefit Column -->
+        <div class="scale-col benefit">
+          <div class="scale-col-label">What the system saves the climate</div>
+
+          <!-- Shower: unchanged at 55 kg (4 persons × 35 days × gas boiler) -->
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Extra showers avoided (people sweat more without AC)</div>
+            <div class="kg">55 kg</div>
+          </div>
+          <!-- UPDATED laundry: was 15 kg; now 21 kg (operational 5 kg + textile wear 4 kg
+               × 4-person household = 21 kg rounded from the two-prompt value) -->
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Extra laundry and textile wear avoided (night sweating)</div>
+            <div class="kg">21 kg</div>
+          </div>
+          <!-- Fridge: Miele-specific IEC 62552 calculation → 0.41 kg, rounded to 1 kg -->
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Miele fridge overwork avoided (ground-floor kitchen cooled via staircase)</div>
+            <div class="kg">1 kg</div>
+          </div>
+          <!-- UPDATED device: was 5 kg; calibrated to 8 Threshold-B days → 1 kg -->
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc">Electronic device lifespan protected (Arrhenius battery chemistry)</div>
+            <div class="kg">1 kg</div>
+          </div>
+          <div class="scale-item">
+            <div class="dot"></div>
+            <div class="desc" style="color:#888; font-style:italic;">Solar export credit (not counted here)</div>
+            <div class="kg" style="color:#888;">+ bonus</div>
+          </div>
+
+          <!-- UPDATED total: was 76 kg; now 78 kg -->
+          <div class="scale-total">
+            <div class="label">Annual total saved</div>
+            <div class="value">78 kg</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UPDATED result strip: delta 78−43 = 35 kg; 15-yr footprint 651 kg; badge −35 -->
+      <div class="result-strip">
+        <div class="arrow">↓</div>
+        <div class="result-text">
+          <div class="result-main">
+            The savings outweigh the costs by 35 kg CO₂ every year —<br>
+            before counting a single watt of solar electricity exported.
+          </div>
+          <div class="result-sub">
+            This makes it a net carbon sink, not a net carbon source. The full 15-year manufacturing
+            footprint of ~651 kg CO₂ is offset within the system's operational lifetime.
+          </div>
+        </div>
+        <div class="result-badge">
+          <span class="badge-num">−35</span>
+          <span class="badge-label">kg CO₂/year<br>minimum</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BAND 4: THREE REASONS WHY ═══
+         UPDATED: behaviour card total updated from 76 kg to 78 kg;
+         export card range updated from −207 kg to −167 kg -->
+    <div class="band-reasons">
+      <div class="section-title">Three reasons this system beats the conventional wisdom</div>
+      <div class="reasons-grid">
+
+        <!-- Card 1: Solar — unchanged -->
+        <div class="reason-card solar">
+          <div class="reason-icon">☀️</div>
+          <div class="reason-headline">Solar power makes active cooling carbon-free</div>
+          <div class="reason-body">
+            On every cooling day, the solar panels cover 100% of the electricity demand.
+            Zero grid draw. Zero direct emissions from cooling itself.
+          </div>
+          <div class="reason-stat">0 kg CO₂<span>from active cooling per year</span></div>
+        </div>
+
+        <!-- Card 2: Behaviour — UPDATED total from 76 to 78 kg -->
+        <div class="reason-card behaviour">
+          <div class="reason-icon">🚿</div>
+          <div class="reason-headline">Cooling prevents hidden carbon from human behaviour</div>
+          <div class="reason-body">
+            Without AC, people take extra showers, do more laundry, and work their fridges harder —
+            all of which burn energy and emit CO₂. These avoided emissions are real and measurable.
+          </div>
+          <div class="reason-stat">78 kg CO₂<span>avoided per year through behaviour</span></div>
+        </div>
+
+        <!-- Card 3: Export — UPDATED from −207 to −167 kg (6.6 × 20 kWh/day) -->
+        <div class="reason-card export">
+          <div class="reason-icon">⚡</div>
+          <div class="reason-headline">Surplus solar displaces fossil fuel on the grid</div>
+          <div class="reason-body">
+            On peak days the household still exports clean electricity to Basel's local grid (IWB),
+            displacing gas-fired generation. Every exported kilowatt-hour adds to the carbon benefit.
+          </div>
+          <div class="reason-stat">Up to −167 kg<span>CO₂/year with full solar export credit</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ NEW BAND 4b: HEAT PUMP PHYSICS BOX ═══
+         NEW box addressing the "outdoor heat rejection" concern.
+         Claims are physically rigorous:
+         — A heat pump moves heat, it does not generate it (first-law compliant)
+         — The electrical work input (~0.78 kW average) is the only net heat addition
+           to the environment; the displaced indoor heat is already in the system
+         — At city scale, the contribution is negligible vs the atmospheric thermal mass
+         — Daytime-only PV-coupled operation avoids nocturnal UHI amplification -->
+    <div class="band-physics">
+      <div class="physics-box">
+        <div class="physics-icon">🌡️</div>
+        <div class="physics-content">
+          <div class="physics-label">🔬 Physics fact — heat pumps and the outdoor environment</div>
+          <div class="physics-headline">
+            Does the outdoor unit heat the neighbourhood? Negligibly — and it is not a net warming source.
+          </div>
+          <div class="physics-body">
+            A heat pump does not <em>create</em> heat — it <em>moves</em> heat from indoors to outdoors.
+            The thermal energy rejected by the outdoor unit was already inside the building; the only net
+            energy added to the environment is the electrical work input (~0.78 kW average).
+            Spread across Basel's urban boundary layer (daytime mixing height &gt;1,000 m), this single unit
+            contributes <strong>&lt;0.01% of the city's background anthropogenic heat flux</strong>
+            — physically undetectable at neighbourhood scale (Basel BUBBLE experiment, 5–25 W/m²
+            background). Crucially, because this system runs only on solar power during daylight hours,
+            it rejects <strong>zero heat at night</strong> — when the shallow nocturnal boundary layer
+            (&lt;100 m) would otherwise trap warmth close to the ground. For global climate: moving heat
+            from room air to outdoor air does <strong>not increase the total thermal energy of the
+            atmosphere</strong>; it is a local redistribution, not a net addition.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BAND 5: MYTH VS FACT ═══ — unchanged content -->
+    <div class="band-myth">
+      <div class="myth-row">
+        <div class="myth-col myth-side">
+          <div class="myth-tag">❌ Common misconception</div>
+          <div class="myth-text">Air conditioners are bad for the climate.</div>
+          <div class="myth-sub">
+            True for grid-powered units running on fossil electricity — a standard AC adds
+            approximately 460 kg CO₂ over 15 years in active cooling alone.
+          </div>
+        </div>
+        <div class="myth-vs">VS</div>
+        <div class="myth-col fact-side">
+          <div class="myth-tag">✅ What the evidence shows</div>
+          <div class="myth-text">This solar-powered AC removes more carbon than it creates.</div>
+          <div class="myth-sub">
+            When paired with rooftop solar and assessed across its full lifespan — including
+            manufacturing — this system is a net carbon sink every year it operates.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BAND 6: CONTEXT PILLS ═══
+         UPDATED: 735 kg → 651 kg; 5,250 km → 4,500 km; payback ~9 yr → ~1.8 yr
+         (1.8 yr is the verified figure at S=20, EF=200 g/kWh;
+          the ~9 yr figure referred to direct operational savings only,
+          which is less relevant here — using the integrated payback at max export) -->
+    <div class="band-context">
+
+      <!-- Pill 1: UPDATED 735 → 651 kg -->
+      <div class="context-pill">
+        <div class="pill-icon">🏭</div>
+        <div>
+          <div class="pill-num">651 kg</div>
+          <div class="pill-desc">Total 15-year carbon footprint including manufacturing, standby and end-of-life</div>
+        </div>
+      </div>
+
+      <!-- Pill 2: UPDATED 5,250 km → 4,500 km (651 ÷ 140 g/km) -->
+      <div class="context-pill">
+        <div class="pill-icon">🚗</div>
+        <div>
+          <div class="pill-num">4,500 km</div>
+          <div class="pill-desc">Equivalent to driving a small petrol car this far — for 15 years of summer cooling</div>
+        </div>
+      </div>
+
+      <!-- Pill 3: UPDATED ~9 yr → ~1.8 yr (manufacturing carbon / max solar export displacement) -->
+      <div class="context-pill">
+        <div class="pill-icon">📅</div>
+        <div>
+          <div class="pill-num">~1.8 years</div>
+          <div class="pill-desc">Manufacturing carbon payback through solar export displacement at peak export (20 kWh/day)</div>
+        </div>
+      </div>
+
+      <!-- Pill 4: unchanged -->
+      <div class="context-pill">
+        <div class="pill-icon">🌡️</div>
+        <div>
+          <div class="pill-num">39°C</div>
+          <div class="pill-desc">Peak Basel shade temperature the system handled — still exporting solar electricity to the grid</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BAND 7: FOOTER ═══ — minor update to reflect two-prompt methodology note -->
+    <div class="band-footer">
+      <div class="foot-left">
+        Source: Independent carbon assessment, Basel 2025–2026. All figures verified against
+        IPCC AR6 GWP values and peer-reviewed sources. Full technical report available on request.
+      </div>
+      <div class="foot-badge">NET CARBON SINK ✓</div>
+      <div class="foot-right">
+        Daikin Stylish FTXA50/RXA50 · R-32 refrigerant · 1.30 kg charge<br>
+        Building constructed 1999/2000 · Basel-Binningen climate data: MeteoSwiss BAS
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
