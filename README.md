@@ -20,6 +20,13 @@ published lay briefing, technical report, and visual infographic.
 | `Solar AC Climate Benefit Methods and Results.pdf` | Detailed technical report |
 | `index.html` | Self-contained A4 infographic (open in any browser) |
 
+
+## 📄 Detailed Technical Report
+
+**[Download Full Technical Report (PDF)](https://github.com/mhasselblatt/airco.co2.sink/raw/main/Solar%20AC%20Climate%20Benefit%20Methods%20and%20Results.pdf)**
+
+Complete methodology, detailed findings, audit corrections, and peer-reviewed citations.
+
 ---
 
 ## The System Assessed
