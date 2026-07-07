@@ -17,8 +17,8 @@ published lay briefing, technical report, and visual infographic.
 
 | File | Description |
 |---|---|
-| `report-briefing.pdf` | Plain-English policy briefing for educated lay audience |
-| `infographic.html` | Self-contained A4 infographic (open in any browser) |
+| `Solar AC Climate Benefit Methods and Results.pdf` | Detailed technical report |
+| `index.html` | Self-contained A4 infographic (open in any browser) |
 
 ---
 
